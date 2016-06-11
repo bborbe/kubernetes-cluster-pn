@@ -17,6 +17,7 @@
 			"nfsd": true,
 			"storage": false,
 			"cores": 4,
+			"memory": 2000,
 			"number": 1
 		}
 	]
