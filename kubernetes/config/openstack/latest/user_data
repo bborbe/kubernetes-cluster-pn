@@ -159,7 +159,7 @@ coreos:
             --hostname-override=172.16.90.10 \
             --cluster-dns=10.103.0.10 \
             --cluster-domain=cluster.local \
-            --node-labels=role=etcd,role=worker,role=master \
+            --node-labels=etcd=true,worker=true,master=true \
             --v=2
         [Install]
         WantedBy=multi-user.target
