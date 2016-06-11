@@ -1,0 +1,23 @@
+{
+	"region": "pn",
+	"public-ip": "172.16.70.4",
+	"network": "172.16.90",
+	"macprefix": "00:16:3e:2f:90:",
+	"lvm-vg": "system",
+	"vm-prefix": "",
+	"disk-prefix": "",
+	"host": "sun.pn.benjamin-borbe.de",
+	"bridge": "br0",
+	"nodes": [
+		{
+			"name": "kubernetes",
+			"etcd": true,
+			"worker": true,
+			"nfsd": true,
+			"master": true,
+			"storage": false,
+			"cores": 4,
+			"number": 1
+		}
+	]
+}
