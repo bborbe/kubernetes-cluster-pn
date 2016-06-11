@@ -1,6 +1,6 @@
 {
 	"region": "pn",
-	"public-ip": "172.16.70.4",
+	"api-server-ip": "172.16.70.4",
 	"network": "172.16.90",
 	"macprefix": "00:16:3e:2f:90:",
 	"lvm-vg": "system",
