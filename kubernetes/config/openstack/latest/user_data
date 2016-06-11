@@ -73,15 +73,6 @@ coreos:
         What=/dev/vdc
         Where=/data
         Type=ext4
-    - name: storage.mount
-      command: start
-      content: |
-        [Unit]
-        Description=Mount Storage to /storage
-        [Mount]
-        What=/dev/vdc
-        Where=/storage
-        Type=xfs
     - name: rpc-statd.service
       command: start
       enable: true
@@ -168,7 +159,7 @@ coreos:
             --hostname-override=172.16.90.11 \
             --cluster-dns=10.103.0.10 \
             --cluster-domain=cluster.local \
-            --node-labels=role=etcd,role=worker,role=master,role=storage \
+            --node-labels=role=etcd,role=worker,role=master \
             --v=2
         [Install]
         WantedBy=multi-user.target
