@@ -9,6 +9,6 @@ SCRIPT_ROOT=$(dirname ${BASH_SOURCE})
 
 mkdir -p ~/.kube/pn
 
-scp bborbe@sun.pn.benjamin-borbe.de:/var/lib/libvirt/images/kubernetes/scripts/kubernetes-ca.pem ~/.kube/pn/
-scp bborbe@sun.pn.benjamin-borbe.de:/var/lib/libvirt/images/kubernetes/scripts/kubernetes-admin.pem ~/.kube/pn/
-scp bborbe@sun.pn.benjamin-borbe.de:/var/lib/libvirt/images/kubernetes/scripts/kubernetes-admin-key.pem ~/.kube/pn/
+scp bborbe@sun.pn.benjamin-borbe.de:/var/lib/libvirt/images/kubernetes/scripts/ca.pem ~/.kube/pn/
+scp bborbe@sun.pn.benjamin-borbe.de:/var/lib/libvirt/images/kubernetes/scripts/admin.pem ~/.kube/pn/
+scp bborbe@sun.pn.benjamin-borbe.de:/var/lib/libvirt/images/kubernetes/scripts/admin-key.pem ~/.kube/pn/
