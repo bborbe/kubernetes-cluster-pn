@@ -21,7 +21,7 @@ openssl x509 -req -in ${SCRIPT_ROOT}/admin.csr -CA ${SCRIPT_ROOT}/ca.pem -CAkey 
 
 # kubernetes
 openssl genrsa -out ${SCRIPT_ROOT}/kubernetes-key.pem 2048
-KUBERNETES_SVC=10.103.0.1 FIREWALL_IP=172.16.70.4 MASTER_IP=172.16.90.11 openssl req -new -key ${SCRIPT_ROOT}/kubernetes-key.pem -out ${SCRIPT_ROOT}/kubernetes.csr -subj "/CN=kube-apiserver" -config ${SCRIPT_ROOT}/master-openssl.cnf
-KUBERNETES_SVC=10.103.0.1 FIREWALL_IP=172.16.70.4 MASTER_IP=172.16.90.11 openssl x509 -req -in ${SCRIPT_ROOT}/kubernetes.csr -CA ${SCRIPT_ROOT}/ca.pem -CAkey ${SCRIPT_ROOT}/ca-key.pem -CAcreateserial -out ${SCRIPT_ROOT}/kubernetes.pem -days 365 -extensions v3_req -extfile ${SCRIPT_ROOT}/master-openssl.cnf
+KUBERNETES_SVC=10.103.0.1 FIREWALL_IP=172.16.70.4 MASTER_IP=172.16.90.10 openssl req -new -key ${SCRIPT_ROOT}/kubernetes-key.pem -out ${SCRIPT_ROOT}/kubernetes.csr -subj "/CN=kube-apiserver" -config ${SCRIPT_ROOT}/master-openssl.cnf
+KUBERNETES_SVC=10.103.0.1 FIREWALL_IP=172.16.70.4 MASTER_IP=172.16.90.10 openssl x509 -req -in ${SCRIPT_ROOT}/kubernetes.csr -CA ${SCRIPT_ROOT}/ca.pem -CAkey ${SCRIPT_ROOT}/ca-key.pem -CAcreateserial -out ${SCRIPT_ROOT}/kubernetes.pem -days 365 -extensions v3_req -extfile ${SCRIPT_ROOT}/master-openssl.cnf
 
 

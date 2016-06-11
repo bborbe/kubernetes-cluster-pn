@@ -6,7 +6,7 @@ set -o pipefail
 set -o errtrace
 
 
-echo "create virsh kubernetes mac=00:16:3e:2f:90:0b ..."
+echo "create virsh kubernetes mac=00:16:3e:2f:90:0a ..."
 virt-install \
 --import \
 --debug \
@@ -25,5 +25,5 @@ virt-install \
 --disk /dev/system/kubernetes-data,bus=virtio,cache=none,io=native \
 --filesystem /var/lib/libvirt/images/kubernetes/kubernetes-master/config/,config-2,type=mount,mode=squash \
 --filesystem /var/lib/libvirt/images/kubernetes/kubernetes-master/ssl/,kubernetes-ssl,type=mount,mode=squash \
---network bridge=br0,mac=00:16:3e:2f:90:0b,model=virtio
+--network bridge=br0,mac=00:16:3e:2f:90:0a,model=virtio
 

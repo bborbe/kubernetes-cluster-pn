@@ -9,11 +9,11 @@ coreos:
     reboot-strategy: etcd-lock
   etcd2:
     name: "kubernetes"
-    initial-cluster: "kubernetes=http://172.16.90.11:2380"
+    initial-cluster: "kubernetes=http://172.16.90.10:2380"
     initial-cluster-token: "cluster-pn"
     initial-cluster-state: "new"
-    initial-advertise-peer-urls: "http://172.16.90.11:2380"
-    advertise-client-urls: "http://172.16.90.11:2379"
+    initial-advertise-peer-urls: "http://172.16.90.10:2380"
+    advertise-client-urls: "http://172.16.90.10:2379"
     listen-client-urls: "http://0.0.0.0:2379,http://0.0.0.0:4001"
     listen-peer-urls: "http://0.0.0.0:2380"
   units:
@@ -36,9 +36,9 @@ coreos:
     - name: 10-ens3.network
       content: |
         [Match]
-        MACAddress=00:16:3e:2f:90:0b
+        MACAddress=00:16:3e:2f:90:0a
         [Network]
-        Address=172.16.90.11/24
+        Address=172.16.90.10/24
         Gateway=172.16.90.1
         DNS=172.16.90.1
     - name: format-ephemeral.service
@@ -156,7 +156,7 @@ coreos:
             --register-node=true \
             --allow-privileged=true \
             --config=/etc/kubernetes/manifests \
-            --hostname-override=172.16.90.11 \
+            --hostname-override=172.16.90.10 \
             --cluster-dns=10.103.0.10 \
             --cluster-domain=cluster.local \
             --node-labels=role=etcd,role=worker,role=master \
@@ -193,13 +193,13 @@ write_files:
   - path: /etc/environment
     permissions: 0644
     content: |
-      COREOS_PUBLIC_IPV4=172.16.90.11
-      COREOS_PRIVATE_IPV4=172.16.90.11
+      COREOS_PUBLIC_IPV4=172.16.90.10
+      COREOS_PRIVATE_IPV4=172.16.90.10
   - path: /run/flannel/options.env
     permissions: 0644
     content: |
-      FLANNELD_IFACE=172.16.90.11
-      FLANNELD_ETCD_ENDPOINTS=http://172.16.90.11:2379
+      FLANNELD_IFACE=172.16.90.10
+      FLANNELD_ETCD_ENDPOINTS=http://172.16.90.10:2379
   - path: /root/.toolboxrc
     owner: core
     content: |
@@ -237,12 +237,12 @@ write_files:
           - --allow-privileged=true
           - --service-cluster-ip-range=10.103.0.0/16
           - --secure-port=443
-          - --advertise-address=172.16.90.11
+          - --advertise-address=172.16.90.10
           - --admission-control=NamespaceLifecycle,NamespaceExists,LimitRanger,SecurityContextDeny,ServiceAccount,ResourceQuota
-          - --tls-cert-file=/etc/kubernetes/ssl/apiserver.pem
-          - --tls-private-key-file=/etc/kubernetes/ssl/apiserver-key.pem
+          - --tls-cert-file=/etc/kubernetes/ssl/node.pem
+          - --tls-private-key-file=/etc/kubernetes/ssl/node-key.pem
           - --client-ca-file=/etc/kubernetes/ssl/ca.pem
-          - --service-account-key-file=/etc/kubernetes/ssl/apiserver-key.pem
+          - --service-account-key-file=/etc/kubernetes/ssl/node-key.pem
           ports:
           - containerPort: 443
             hostPort: 443
@@ -281,7 +281,7 @@ write_files:
           - /podmaster
           - --etcd-servers=http://172.16.30.15:2379,http://172.16.30.16:2379,http://172.16.30.17:2379
           - --key=controller
-          - --whoami=172.16.90.11
+          - --whoami=172.16.90.10
           - --source-file=/src/manifests/kube-controller-manager.yaml
           - --dest-file=/dst/manifests/kube-controller-manager.yaml
           terminationMessagePath: /dev/termination-log
@@ -297,7 +297,7 @@ write_files:
           - /podmaster
           - --etcd-servers=http://172.16.30.15:2379,http://172.16.30.16:2379,http://172.16.30.17:2379
           - --key=scheduler
-          - --whoami=172.16.90.11
+          - --whoami=172.16.90.10
           - --source-file=/src/manifests/kube-scheduler.yaml
           - --dest-file=/dst/manifests/kube-scheduler.yaml
           volumeMounts:
@@ -382,7 +382,7 @@ write_files:
           - /hyperkube
           - controller-manager
           - --master=http://127.0.0.1:8080
-          - --service-account-private-key-file=/etc/kubernetes/ssl/apiserver-key.pem
+          - --service-account-private-key-file=/etc/kubernetes/ssl/node-key.pem
           - --root-ca-file=/etc/kubernetes/ssl/ca.pem
           livenessProbe:
             httpGet:
