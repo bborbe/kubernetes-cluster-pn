@@ -13,8 +13,8 @@
 			"name": "kubernetes",
 			"etcd": true,
 			"worker": true,
-			"nfsd": true,
 			"master": true,
+			"nfsd": true,
 			"storage": false,
 			"cores": 4,
 			"number": 1
