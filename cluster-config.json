@@ -14,10 +14,9 @@
 			"etcd": true,
 			"worker": true,
 			"master": true,
-			"storage": false,
-			"storagesize": "",
 			"nfsd": true,
 			"nfssize": "5G",
+			"kubeletsize": "9G",
 			"cores": 4,
 			"memory": 2000,
 			"number": 1

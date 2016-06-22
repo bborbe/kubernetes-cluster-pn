@@ -13,6 +13,7 @@ echo "remove lvm volumes ..."
 
 lvremove /dev/system/kubernetes
 lvremove /dev/system/kubernetes-docker
+lvremove /dev/system/kubernetes-kubelet
 
 
 echo "done"

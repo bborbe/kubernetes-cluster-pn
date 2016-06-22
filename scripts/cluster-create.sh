@@ -19,6 +19,7 @@ echo "create lvm volumes ..."
 
 lvcreate -L 10G -n kubernetes system
 lvcreate -L 10G -n kubernetes-docker system
+lvcreate -L 9G -n kubernetes-kubelet system
 
 
 echo "writing images ..."

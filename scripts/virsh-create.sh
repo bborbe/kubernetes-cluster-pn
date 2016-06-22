@@ -22,6 +22,7 @@ virt-install \
 --name kubernetes \
 --disk /dev/system/kubernetes,bus=virtio,cache=none,io=native \
 --disk /dev/system/kubernetes-docker,bus=virtio,cache=none,io=native \
+--disk /dev/system/kubernetes-kubelet,bus=virtio,cache=none,io=native \
 --disk /dev/system/kubernetes-data,bus=virtio,cache=none,io=native \
 --filesystem /var/lib/libvirt/images/kubernetes/kubernetes/config/,config-2,type=mount,mode=squash \
 --filesystem /var/lib/libvirt/images/kubernetes/kubernetes/ssl/,kubernetes-ssl,type=mount,mode=squash \
