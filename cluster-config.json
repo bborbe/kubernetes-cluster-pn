@@ -16,7 +16,9 @@
 			"master": true,
 			"nfsd": true,
 			"nfssize": "5G",
-			"kubeletsize": "9G",
+			"rootsize": "9.5G",
+			"dockersize": "9.5G",
+			"kubeletsize": "9.5G",
 			"cores": 4,
 			"memory": 2000,
 			"number": 1

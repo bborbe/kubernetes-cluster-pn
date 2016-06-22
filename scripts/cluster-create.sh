@@ -17,9 +17,9 @@ qemu-img convert /var/lib/libvirt/images/coreos_production_qemu_image.img -O raw
 
 echo "create lvm volumes ..."
 
-lvcreate -L 10G -n kubernetes system
-lvcreate -L 10G -n kubernetes-docker system
-lvcreate -L 9G -n kubernetes-kubelet system
+lvcreate -L 9.5G -n kubernetes system
+lvcreate -L 9.5G -n kubernetes-docker system
+lvcreate -L 9.5G -n kubernetes-kubelet system
 
 
 echo "writing images ..."
