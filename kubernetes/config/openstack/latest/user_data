@@ -6,7 +6,7 @@ coreos:
   fleet:
     metadata: "region=pn"
   update:
-    reboot-strategy: etcd-lock
+    reboot-strategy: reboot
   etcd2:
     name: "kubernetes"
     initial-cluster: "kubernetes=http://172.16.90.10:2380"
