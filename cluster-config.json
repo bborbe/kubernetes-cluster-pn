@@ -1,6 +1,7 @@
 {
-	"update-reboot-strategy": "reboot",
+	"version": "v1.2.6",
 	"region": "pn",
+	"update-reboot-strategy": "reboot",
 	"api-server-ip": "172.16.70.4",
 	"network": "172.16.90",
 	"macprefix": "00:16:3e:2f:90:",
