@@ -1,5 +1,5 @@
 {
-	"version": "v1.3.4",
+	"version": "v1.3.5",
 	"region": "pn",
 	"update-reboot-strategy": "reboot",
 	"api-server-ip": "172.16.70.4",
