@@ -22,7 +22,7 @@
 			"dockersize": "9.5G",
 			"kubeletsize": "9.5G",
 			"cores": 4,
-			"memory": 2000,
+			"memory": 4000,
 			"number": 1
 		}
 	]
