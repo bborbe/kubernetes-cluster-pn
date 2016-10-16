@@ -1,29 +1,31 @@
 {
-	"version": "v1.4.1",
+	"kuberntes-version": "v1.4.1",
 	"region": "pn",
 	"update-reboot-strategy": "reboot",
-	"api-server-ip": "172.16.70.4",
-	"network": "172.16.90",
-	"macprefix": "00:16:3e:2f:90:",
-	"lvm-vg": "system",
-	"vm-prefix": "",
-	"disk-prefix": "",
-	"host": "sun.pn.benjamin-borbe.de",
-	"bridge": "privatebr0",
-	"nodes": [
+	"hosts": [
 		{
-			"name": "kubernetes",
-			"etcd": true,
-			"worker": true,
-			"master": true,
-			"nfsd": true,
-			"nfssize": "5G",
-			"rootsize": "9.5G",
-			"dockersize": "9.5G",
-			"kubeletsize": "9.5G",
-			"cores": 4,
-			"memory": 4000,
-			"number": 1
+			"name": "sun.pn.benjamin-borbe.de",
+			"lvm-vg": "system",
+			"vm-prefix": "",
+			"disk-prefix": "",
+			"kubernetes-network": "172.16.90.0/24",
+			"kubernetes-device": "fw-k8s",
+			"nodes": [
+				{
+					"name": "kubernetes",
+					"etcd": true,
+					"worker": true,
+					"master": true,
+					"nfsd": true,
+					"nfssize": "5G",
+					"rootsize": "9.5G",
+					"dockersize": "9.5G",
+					"kubeletsize": "9.5G",
+					"cores": 4,
+					"memory": 4000,
+					"number": 1
+				}
+			]
 		}
 	]
 }
