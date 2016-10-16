@@ -9,11 +9,11 @@ coreos:
     reboot-strategy: reboot
   etcd2:
     name: "kubernetes"
-    initial-cluster: "kubernetes=http://172.16.90.10:2380"
+    initial-cluster: "kubernetes=http://172.16.72.10:2380"
     initial-cluster-token: "cluster-pn"
     initial-cluster-state: "new"
-    initial-advertise-peer-urls: "http://172.16.90.10:2380"
-    advertise-client-urls: "http://172.16.90.10:2379"
+    initial-advertise-peer-urls: "http://172.16.72.10:2380"
+    advertise-client-urls: "http://172.16.72.10:2379"
     listen-client-urls: "http://0.0.0.0:2379,http://0.0.0.0:4001"
     listen-peer-urls: "http://0.0.0.0:2380"
   units:
@@ -36,10 +36,10 @@ coreos:
     - name: 10-ens3.network
       content: |
         [Match]
-        MACAddress=00:16:ac:10:5a:0a
+        MACAddress=00:16:ac:10:48:0a
         [Network]
-        Address=172.16.90.10/24
-        Gateway=172.16.90.1
+        Address=172.16.72.10/24
+        Gateway=172.16.72.1
         DNS=8.8.8.8
     - name: format-ephemeral.service
       command: start
@@ -179,7 +179,7 @@ coreos:
             --register-node=true \
             --allow-privileged=true \
             --config=/etc/kubernetes/manifests \
-            --hostname-override=172.16.90.10 \
+            --hostname-override=172.16.72.10 \
             --cluster-dns=10.103.0.10 \
             --cluster-domain=cluster.local \
             --node-labels=etcd=true,nfsd=true,worker=true,master=true \
@@ -216,13 +216,13 @@ write_files:
   - path: /etc/environment
     permissions: 0644
     content: |
-      COREOS_PUBLIC_IPV4=172.16.90.10
-      COREOS_PRIVATE_IPV4=172.16.90.10
+      COREOS_PUBLIC_IPV4=172.16.72.10
+      COREOS_PRIVATE_IPV4=172.16.72.10
   - path: /run/flannel/options.env
     permissions: 0644
     content: |
-      FLANNELD_IFACE=172.16.90.10
-      FLANNELD_ETCD_ENDPOINTS=http://172.16.90.10:2379
+      FLANNELD_IFACE=172.16.72.10
+      FLANNELD_ETCD_ENDPOINTS=http://172.16.72.10:2379
   - path: /root/.toolboxrc
     owner: core
     content: |
@@ -238,7 +238,7 @@ write_files:
   - path: /etc/exports
     permissions: 0644
     content: |
-      /data/ 172.16.90.0/24(rw,async,no_subtree_check,no_root_squash,fsid=0)
+      /data/ 172.16.72.0/24(rw,async,no_subtree_check,no_root_squash,fsid=0)
   - path: /etc/kubernetes/manifests/kube-apiserver.yaml
     permissions: 0644
     content: |
@@ -256,11 +256,11 @@ write_files:
           - /hyperkube
           - apiserver
           - --bind-address=0.0.0.0
-          - --etcd-servers=http://172.16.90.10:2379
+          - --etcd-servers=http://172.16.72.10:2379
           - --allow-privileged=true
           - --service-cluster-ip-range=10.103.0.0/16
           - --secure-port=443
-          - --advertise-address=172.16.90.10
+          - --advertise-address=172.16.72.10
           - --admission-control=NamespaceLifecycle,NamespaceExists,LimitRanger,SecurityContextDeny,ServiceAccount,ResourceQuota
           - --tls-cert-file=/etc/kubernetes/ssl/node.pem
           - --tls-private-key-file=/etc/kubernetes/ssl/node-key.pem
@@ -302,9 +302,9 @@ write_files:
           image: gcr.io/google_containers/podmaster:1.1
           command:
           - /podmaster
-          - --etcd-servers=http://172.16.90.10:2379
+          - --etcd-servers=http://172.16.72.10:2379
           - --key=controller
-          - --whoami=172.16.90.10
+          - --whoami=172.16.72.10
           - --source-file=/src/manifests/kube-controller-manager.yaml
           - --dest-file=/dst/manifests/kube-controller-manager.yaml
           terminationMessagePath: /dev/termination-log
@@ -318,9 +318,9 @@ write_files:
           image: gcr.io/google_containers/podmaster:1.1
           command:
           - /podmaster
-          - --etcd-servers=http://172.16.90.10:2379
+          - --etcd-servers=http://172.16.72.10:2379
           - --key=scheduler
-          - --whoami=172.16.90.10
+          - --whoami=172.16.72.10
           - --source-file=/src/manifests/kube-scheduler.yaml
           - --dest-file=/dst/manifests/kube-scheduler.yaml
           volumeMounts:
