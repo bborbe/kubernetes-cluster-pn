@@ -1,5 +1,5 @@
 {
-	"kuberntes-version": "v1.4.1",
+	"kuberntes-version": "v1.4.3",
 	"region": "pn",
 	"update-reboot-strategy": "reboot",
 	"hosts": [

@@ -11,9 +11,9 @@ ${SCRIPT_ROOT}/virsh-undefine.sh
 
 echo "remove lvm volumes ..."
 
-lvremove /dev/system/kubernetes
-lvremove /dev/system/kubernetes-docker
-lvremove /dev/system/kubernetes-kubelet
+lvremove -f /dev/system/kubernetes
+lvremove -f /dev/system/kubernetes-docker
+lvremove -f /dev/system/kubernetes-kubelet
 
 
 echo "done"
