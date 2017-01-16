@@ -13,7 +13,7 @@
 			"disk-prefix": "",
 			"kubernetes-device": "host-k8s",
 			"kubernetes-network": "172.16.72.0/24",
-			"kubernetes-dns": "172.16.72.1",
+			"kubernetes-dns": "8.8.8.8",
 			"nodes": [
 				{
 					"name": "kubernetes",
