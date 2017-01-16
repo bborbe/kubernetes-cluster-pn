@@ -4,13 +4,13 @@ ssh_authorized_keys:
 hostname: kubernetes
 coreos:
   fleet:
-    metadata: "region=pn"
+    metadata: "region=sun"
   update:
     reboot-strategy: reboot
   etcd2:
     name: "kubernetes"
     initial-cluster: "kubernetes=http://172.16.72.10:2380"
-    initial-cluster-token: "cluster-pn"
+    initial-cluster-token: "cluster-sun"
     initial-cluster-state: "new"
     initial-advertise-peer-urls: "http://172.16.72.10:2380"
     advertise-client-urls: "http://172.16.72.10:2379"

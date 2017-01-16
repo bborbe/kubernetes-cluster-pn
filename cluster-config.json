@@ -1,6 +1,6 @@
 {
 	"kuberntes-version": "v1.5.1",
-	"region": "pn",
+	"region": "sun",
 	"update-reboot-strategy": "reboot",
 	"features": {
 		"kvm": true

@@ -7,8 +7,8 @@ set -o errtrace
 
 SCRIPT_ROOT=$(dirname ${BASH_SOURCE})
 
-mkdir -p ~/.kube/pn
+mkdir -p ~/.kube/sun
 
-scp bborbe@sun.pn.benjamin-borbe.de:/var/lib/libvirt/images/kubernetes/scripts/ca.pem ~/.kube/pn/
-scp bborbe@sun.pn.benjamin-borbe.de:/var/lib/libvirt/images/kubernetes/scripts/admin.pem ~/.kube/pn/
-scp bborbe@sun.pn.benjamin-borbe.de:/var/lib/libvirt/images/kubernetes/scripts/admin-key.pem ~/.kube/pn/
+scp bborbe@sun.pn.benjamin-borbe.de:/var/lib/libvirt/images/kubernetes/scripts/ca.pem ~/.kube/sun/
+scp bborbe@sun.pn.benjamin-borbe.de:/var/lib/libvirt/images/kubernetes/scripts/admin.pem ~/.kube/sun/
+scp bborbe@sun.pn.benjamin-borbe.de:/var/lib/libvirt/images/kubernetes/scripts/admin-key.pem ~/.kube/sun/
