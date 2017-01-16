@@ -12,7 +12,7 @@ virt-install \
 --debug \
 --serial pty \
 --accelerate \
---ram 4000 \
+--ram 10000 \
 --vcpus 4 \
 --cpu=host \
 --os-type linux \
