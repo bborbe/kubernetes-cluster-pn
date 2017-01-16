@@ -26,5 +26,5 @@ virt-install \
 --disk /dev/system/kubernetes-data,bus=virtio,cache=none,io=native \
 --filesystem /var/lib/libvirt/images/kubernetes/kubernetes/config/,config-2,type=mount,mode=squash \
 --filesystem /var/lib/libvirt/images/kubernetes/kubernetes/ssl/,kubernetes-ssl,type=mount,mode=squash \
---network bridge=fw-k8s,mac=00:16:ac:10:48:0a,model=virtio
+--network bridge=host-k8s,mac=00:16:ac:10:48:0a,model=virtio
 
