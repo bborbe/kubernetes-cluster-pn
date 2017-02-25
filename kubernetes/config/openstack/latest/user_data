@@ -186,7 +186,7 @@ coreos:
             --cluster-dns=10.103.0.10 \
             --cluster-domain=cluster.local \
             --node-labels=etcd=true,nfsd=true,worker=true,master=true \
-            --v=2
+            --v=0
         [Install]
         WantedBy=multi-user.target
     - name: kube-system-namespace.service
