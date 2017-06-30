@@ -180,13 +180,14 @@ coreos:
           gcr.io/google_containers/hyperkube-amd64:v1.6.6 \
           /hyperkube kubelet \
             --containerized \
-            --api_servers=http://127.0.0.1:8080 \
             --register-node=true \
             --allow-privileged=true \
-            --config=/etc/kubernetes/manifests \
+            --pod-manifest-path=/etc/kubernetes/manifests \
             --hostname-override=172.16.72.10 \
             --cluster-dns=10.103.0.10 \
             --cluster-domain=cluster.local \
+            --require-kubeconfig=true \
+            --kubeconfig=/etc/kubernetes/node-kubeconfig.yaml \
             --node-labels=etcd=true,nfsd=true,worker=true,master=true \
             --v=0
         [Install]
@@ -353,6 +354,27 @@ write_files:
         - hostPath:
             path: /etc/kubernetes/manifests
           name: manifest-dst
+  - path: /etc/kubernetes/node-kubeconfig.yaml
+    permissions: 0644
+    content: |
+      apiVersion: v1
+      kind: Config
+      clusters:
+      - name: local
+        cluster:
+          certificate-authority: /etc/kubernetes/ssl/ca.pem
+          server: //127.0.0.1:8080
+      users:
+      - name: kubelet
+        user:
+          client-certificate: /etc/kubernetes/ssl/node.pem
+          client-key: /etc/kubernetes/ssl/node-key.pem
+      contexts:
+      - context:
+          cluster: local
+          user: kubelet
+        name: kubelet-context
+      current-context: kubelet-context
   - path: /etc/kubernetes/manifests/kube-proxy.yaml
     permissions: 0644
     content: |
@@ -445,4 +467,3 @@ write_files:
         - name: ssl-certs-host 
           hostPath:
             path: /usr/share/ca-certificates
-          
