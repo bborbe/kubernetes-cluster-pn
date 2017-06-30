@@ -266,6 +266,7 @@ write_files:
           - apiserver
           - --bind-address=0.0.0.0
           - --etcd-servers=http://172.16.72.10:2379
+          - --storage-backend=etcd2
           - --allow-privileged=true
           - --service-cluster-ip-range=10.103.0.0/16
           - --secure-port=443
