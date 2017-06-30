@@ -363,7 +363,7 @@ write_files:
       - name: local
         cluster:
           certificate-authority: /etc/kubernetes/ssl/ca.pem
-          server: //127.0.0.1:8080
+          server: http://127.0.0.1:8080
       users:
       - name: kubelet
         user:
